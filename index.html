@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management Dashboard</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Management Dashboard</h1>
+
+        <!-- Dashboard Cards -->
+        <div class="dashboard">
+            <div class="card">
+                <div>
+                    <h2>Total Employees</h2>
+                    <p id="totalCount">2</p>
+                </div>
+                \
+            </div>
+            <div class="card">
+                <div>
+                    <h2>IT Department</h2>
+                    <p id="itCount">1</p>
+                </div>
+               
+            </div>
+            <div class="card">
+                <div>
+                    <h2>HR Department</h2>
+                    <p id="hrCount">1</p>
+                </div>
+                
+            </div>
+            <div class="card">
+                <div>
+                    <h2>Marketing</h2>
+                    <p id="marketingCount">0</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="form-section">
+            <h2 id="formTitle">Register New Employee</h2>
+            <input type="hidden" id="editIndex" value="-1">
+            <div class="form-grid">
+                <div>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter Full Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter Email Address" required>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <select id="department">
+                        <option value="">Select Department</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Marketing">Marketing</option>
+                        
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="designation">Designation</label>
+                    <input type="text" id="designation" placeholder="Enter Designation" required>
+                </div>
+                <div class="form-group">
+                    <label for="joiningDate">Joining Date</label>
+                    <input type="date" id="joiningDate" required>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button id="submitBtn" onclick="submitForm()">Register Employee</button>
+                <button id="cancelBtn" class="btn-secondary" onclick="cancelEdit()" style="display:none;">Cancel</button>
+            </div>
+            <p id="formError" class="form-error"></p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by name, email, or department…" oninput="renderTable()">
+            <button onclick="renderTable()">Search</button>
+        </div>
+
+        <!--  Table -->
+        <div class="employee-list">
+            <h2>Employee List</h2>
+            <div class="table">
+                <table class="employee-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Designation</th>
+                            <th>Joining Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employeeTableBody">
+                    </tbody>
+                </table>
+            </div>
+            <p id="noResults" class="no-results" style="display:none;">No employees found.</p>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+ 
+    <script src="index.js"></script>
+</body>
+</html>
